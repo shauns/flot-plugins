@@ -34,7 +34,7 @@ ranges.
 			var bulletOpts = plot.getOptions().series.bullet;
 			if (!bulletOpts) return;
 			
-			ctx.fillStyle = "#000";
+			ctx.fillStyle = "#74C0CF";
 			var height = plot.height();
 			
 			// Draw target
