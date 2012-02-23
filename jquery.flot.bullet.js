@@ -79,7 +79,6 @@ ranges.
 			var bars = series.bars;			
 			bars.show = true;
 			bars.align = 'center';
-			bars.lineWidth = 6;
 			bars.horizontal = true;
 			
 			var xaxis = options.xaxis;
