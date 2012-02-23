@@ -91,7 +91,7 @@ ranges.
 			yaxis.max = 2;
 			yaxis.ticks = 0;
 			
-			options.colors = ['#0C0', '#FFD200', '#C00', '#FFD200', '#0C0'];
+			
 		}
 		
 		plot.hooks.processOptions.push(overrideOptionsForBullet);
