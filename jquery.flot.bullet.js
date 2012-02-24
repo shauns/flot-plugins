@@ -70,6 +70,7 @@ ranges.
 					var bonusValue = bulletOpts.actual + bulletOpts.bonusAmount;
 					var bonusOffset = plot.pointOffset({x: bonusValue, y: 0});
 					ctx.fillStyle = bulletOpts.bonusColor || bulletOpts.color || '#008A6E';
+					ctx.strokeStyle = ctx.fillStyle;
 					ctx.globalAlpha = semiAlpha;
 					ctx.fillRect(actualOffset.left, actualOffset.top - (height * 0.25), bonusOffset.left - actualOffset.left, height * 0.5);
 					ctx.globalAlpha = baseAlpha;
