@@ -37,6 +37,8 @@ ranges.
 			ctx.fillStyle = bulletOpts.color || "#2B4E69";
 			var height = plot.height();
 			
+			var zeroOffset = plot.pointOffset({x: 0, y: 0});
+			
 			// Draw target
 			if (bulletOpts.target) {
 				var targetOffset = plot.pointOffset({ x: bulletOpts.target, y: 0 });
@@ -54,7 +56,7 @@ ranges.
 				plot.getPlaceholder().append('<div class="actual"'
 				 	+ 'style="position:absolute;left:' + (actualOffset.left + 4) + 'px;top:'
 				 	+ (actualOffset.top - (height - 4) * 2) + 'px;">'+bulletOpts.actual+'</div>');
-				ctx.fillRect(0, actualOffset.top - (height / 1.5), actualOffset.left, height * 0.5);
+				ctx.fillRect(zeroOffset.left, actualOffset.top - (height / 1.5), actualOffset.left, height * 0.5);
 				ctx.save();
 			}
 		}
