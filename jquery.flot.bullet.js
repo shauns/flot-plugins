@@ -35,6 +35,9 @@ ranges.
 			if (!bulletOpts) return;
 			
 			ctx.fillStyle = bulletOpts.color || "#2B4E69";
+			ctx.strokeStyle = ctx.fillStyle
+			var baseAlpha = ctx.globalAlpha;
+			var semiAlpha = bulletOpts.opacity || 0.4;
 			var height = plot.height();
 			
 			var zeroOffset = plot.pointOffset({x: 0, y: 0});
@@ -58,16 +61,23 @@ ranges.
 				 		+ 'style="position:absolute;left:' + (actualOffset.left + 4) + 'px;top:'
 				 		+ (actualOffset.top - (height - 4) * 2) + 'px;">'+bulletOpts.actual+'</div>');
 				}
+				ctx.globalAlpha = semiAlpha;
 				ctx.fillRect(zeroOffset.left, actualOffset.top - (height * 0.25), actualOffset.left - zeroOffset.left, height * 0.5);
+				ctx.globalAlpha = baseAlpha;
+				ctx.strokeRect(zeroOffset.left, actualOffset.top - (height * 0.25), actualOffset.left - zeroOffset.left, height * 0.5)
 				ctx.save();
 				if (bulletOpts.bonusAmount) {
 					var bonusValue = bulletOpts.actual + bulletOpts.bonusAmount;
 					var bonusOffset = plot.pointOffset({x: bonusValue, y: 0});
 					ctx.fillStyle = bulletOpts.bonusColor || bulletOpts.color || '#008A6E';
+					ctx.globalAlpha = semiAlpha;
 					ctx.fillRect(actualOffset.left, actualOffset.top - (height * 0.25), bonusOffset.left - actualOffset.left, height * 0.5);
+					ctx.globalAlpha = baseAlpha;
+					ctx.strokeRect(actualOffset.left, actualOffset.top - (height * 0.25), bonusOffset.left - actualOffset.left, height * 0.5);
 					ctx.save();
 				}
 			}
+			ctx.globalAlpha = baseAlpha;
 		}
 		
 		function overrideYCoords(plot, s, datapoints) {
