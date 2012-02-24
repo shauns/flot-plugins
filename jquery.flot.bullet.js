@@ -53,11 +53,20 @@ ranges.
 			// Draw actual
 			if (bulletOpts.actual) {
 				var actualOffset = plot.pointOffset({ x: bulletOpts.actual, y: 0 });
-				plot.getPlaceholder().append('<div class="actual"'
-				 	+ 'style="position:absolute;left:' + (actualOffset.left + 4) + 'px;top:'
-				 	+ (actualOffset.top - (height - 4) * 2) + 'px;">'+bulletOpts.actual+'</div>');
+				if (bulletOpts.actualMarker) {
+					plot.getPlaceholder().append('<div class="actual"'
+				 		+ 'style="position:absolute;left:' + (actualOffset.left + 4) + 'px;top:'
+				 		+ (actualOffset.top - (height - 4) * 2) + 'px;">'+bulletOpts.actual+'</div>');
+				}
 				ctx.fillRect(zeroOffset.left, actualOffset.top - (height * 0.25), actualOffset.left - zeroOffset.left, height * 0.5);
 				ctx.save();
+				if (bulletOpts.bonusAmount) {
+					var bonusValue = bulletOpts.actual + bulletOpts.bonusAmount;
+					var bonusOffset = plot.pointOffset({x: bonusValue, y: 0});
+					ctx.fillStyle = bulletOpts.bonusColor || bulletOpts.color || '#008A6E';
+					ctx.fillRect(actualOffset.left, actualOffset.top - (height * 0.25), bonusOffset.left - actualOffset.left, height * 0.5);
+					ctx.save();
+				}
 			}
 		}
 		
