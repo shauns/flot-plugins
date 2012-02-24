@@ -54,7 +54,7 @@ ranges.
 				plot.getPlaceholder().append('<div class="actual"'
 				 	+ 'style="position:absolute;left:' + (actualOffset.left + 4) + 'px;top:'
 				 	+ (actualOffset.top - (height - 4) * 2) + 'px;">'+bulletOpts.actual+'</div>');
-				ctx.fillRect(0, actualOffset.top - (height / 0.5), actualOffset.left, height * 0.5);
+				ctx.fillRect(0, actualOffset.top - (height / 1.5), actualOffset.left, height * 0.5);
 				ctx.save();
 			}
 		}
